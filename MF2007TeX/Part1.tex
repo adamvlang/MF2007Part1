@@ -1,0 +1,90 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: Part1.tex
+% Date Created: 2016 Jan 22
+%  Last Change: 2016 Jan 22
+%     Compiler: pdflatex
+%       Author: Lamn
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+
+\title{MF2007 Workshop Part1}
+\author{Adam Lang, Andreas Fr\"{o}derberg, Gabriel Andersson Santiago}
+
+\newcounter{eq}
+\stepcounter{eq}
+
+\newcommand{\eq}[1]{
+\begin{equation}
+        #1
+\end{equation}
+    }
+
+\begin{document}
+\maketitle
+\section{Ex. 1}
+  The model can be described with the following differential equation,
+  \eq{
+  f-d\dot{x}=m\ddot{x}\Leftrightarrow \ddot{x}=\frac{1}{m}(f-d\dot{x})
+  }
+  In this system we have one energy storing element, the mass, $m$. The
+  transfer function can be derived by first Laplace transforming the
+  differential equation,
+  \eq{
+  \mathscr{L}\{\ddot{x}=\frac{1}{m}(f-d\dot{x})\}\Rightarrow s^2Y=(\frac{1}{m}(U-dsY)
+  }
+  Then can the transfer function be found as,
+  \eq{
+  G(s)=\frac{1}{ms^2+ds}
+  }
+  We can also derive a state space model from the differential equations
+  where,
+  \eq{
+  \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    x \\
+    \dot{x} \\
+  \end{bmatrix},
+  }
+  so that, 
+  \eq{
+  \mathbf{\dot{x}}=
+  \begin{bmatrix}
+    x_2\\
+    \frac{1}{m}(F-dx_2)\\
+  \end{bmatrix}.
+  }
+  This will then give us the state space model as,
+  \eq{
+  \begin{cases}
+  \mathbf{\dot{x}}=
+  \begin{bmatrix}
+    0 & 1 \\
+    0 & -\frac{d}{m} \\
+  \end{bmatrix}
+  \mathbf{x}+
+  \begin{bmatrix}
+    0 \\
+    \frac{1}{m} \\
+  \end{bmatrix}
+  \mathbf{u}\\
+  \vspace{0.02cm} \\
+  \mathbf{y}=
+  \begin{bmatrix}
+    0 & 1\\
+  \end{bmatrix}
+  \mathbf{x}
+\end{cases}
+  }
+
+
+
+\end{document}
